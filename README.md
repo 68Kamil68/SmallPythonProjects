@@ -1,4 +1,4 @@
-My take on projects from [this repo] (https://github.com/karan/Projects). This readme is just copypasted from there
+My take on projects from [this repo](https://github.com/karan/Projects). This readme is just copypasted from there
 
 
 Mega Project List
