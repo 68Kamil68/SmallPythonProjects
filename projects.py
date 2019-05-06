@@ -3,7 +3,7 @@ import collections
 
 
 def pi_to_n_digit(num):
-    # this function returns pi with precision of n numbers 
+    # this function returns pi with precision of n numbers
     stringed_pi = str(math.pi)
     pi_to = stringed_pi[:num]
     return float(pi_to)
@@ -22,11 +22,11 @@ def fibonnaci(num):
 def prime_factors(num):
     # function that returns all prime factors of a given number
     prime_numbers = []
-    prime_factor =[]
-    for i in range(num+1):  # for each number 
+    prime_factor = []
+    for i in range(num+1):  # for each number
         tab_of_factors = []  # find prime numbers lower or equal to this number
         for j in range(1, i+1):
-            if i%j == 0:
+            if i % j == 0:
                 tab_of_factors.append(j)
         if len(tab_of_factors) == 2:
             prime_numbers.append(i)
@@ -82,34 +82,40 @@ def change_return(cost, amount):
                 coins_given.remove(spare_options[i])
                 tmp -= spare_options[i]
                 i += 1
-    return collections.Counter(coins_given).
+    return collections.Counter(coins_given)
 
 
 def binary_to_decimal(number, mode):
     # program converts given number from
-    # decimal to binary or the other way 
-    converted_number = []
+    # decimal to binary or the other way
+    # mode 1 is decimal -> binary
+    # mode 2 is binary -> decimal
     if mode == 1:
-        while 2**i < number:
+        converted_number = []
+        i = 0
+        while 2**i <= number:
             i += 1
         size_of_decimal_number = i
         for i in range(size_of_decimal_number):
-            converted_number.append[0]
-        tmp = i
-        while tmp >= 0:
-            converted_number[len(converted_number)-tmp] = 1
-            
-        
-
-        
-
-
-        
-
-
-
+            converted_number.append(0)
+        while number > 0:
+            converted_number[len(converted_number)-int(math.log(number, 2)) - 1] = 1
+            i = int(math.log(number, 2))
+            number = number - 2**(i)
+        return converted_number
+    elif mode == 2:
+        converted_number = 0
+        num_as_list = list(str(number))
+        for i in range(len(num_as_list)):
+            if num_as_list[i] == '1':
+                converted_number += 2**(len(num_as_list) - i - 1)
+        return converted_number
+    else:
+        return "Choose the right mode"
 # print(fibonnaci(100))
 # print(pi_to_n_digit(10))
 # print(prime_factors(66))
 # print(mortgage_payments(100000, 2, 'quarterly'))
-print(change_return(5,111.39))
+print(change_return(5, 111.39))
+print(binary_to_decimal(937, 1))
+print(binary_to_decimal(1110101001, 2))
